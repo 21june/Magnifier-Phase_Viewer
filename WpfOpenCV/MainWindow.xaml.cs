@@ -63,7 +63,6 @@ namespace WpfOpenCV
 		{
 			if (filePath == null) return;
 
-			PathText.Text = filePath;
 			inImage = Cv2.ImRead(filePath, ImreadModes.Grayscale);
 			OriginalImage.Source = OpenCvSharp.WpfExtensions.BitmapSourceConverter.ToBitmapSource(inImage);
 
@@ -103,11 +102,10 @@ namespace WpfOpenCV
 		private void Search_Click(object sender, RoutedEventArgs e)
 		{
 			OpenFileDialog openFileDialog = new OpenFileDialog();
-			openFileDialog.Filter = "BMP files (*.bmp)|*.bmp|JPG files (*.jpg)|*.jpg|JPEG files (*.jpeg)|*.jpeg|PNG files (*.png)|*.png|All files (*.*)|*.*"; 
+			openFileDialog.Filter = "PNG files (*.png)|*.png|BMP files (*.bmp)|*.bmp|JPG files (*.jpg)|*.jpg|JPEG files (*.jpeg)|*.jpeg|All files (*.*)|*.*"; 
 			if (openFileDialog.ShowDialog() == true)
 			{
-				PathText.Text = File.ReadAllText(openFileDialog.FileName);
-				filePath = openFileDialog.FileName;
+				PathText.Text = filePath = openFileDialog.FileName;
 				InitImage();
 			}
 		}
